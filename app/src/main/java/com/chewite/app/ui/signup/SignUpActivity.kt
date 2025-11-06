@@ -1,8 +1,10 @@
 package com.chewite.app.ui.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -89,5 +91,32 @@ class SignUpActivity : BaseActivity(), NextButtonHost {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // 2) 버튼만 IME 높이만큼 역이동(애니메이션 프레임마다)
+        ViewCompat.setWindowInsetsAnimationCallback(
+            binding.nextButton,
+            object : WindowInsetsAnimationCompat.Callback(
+                WindowInsetsAnimationCompat.Callback.DISPATCH_MODE_CONTINUE_ON_SUBTREE
+            ) {
+                override fun onProgress(
+                    insets: WindowInsetsCompat,
+                    running: MutableList<WindowInsetsAnimationCompat>
+                ): WindowInsetsCompat {
+                    val sysBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+                    val imeBottom = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                    val offset = (imeBottom - sysBottom).coerceAtLeast(0)
+                    binding.nextButton.translationY = -offset.toFloat()
+                    return insets
+                }
+                override fun onEnd(animation: WindowInsetsAnimationCompat) {
+                    // 최종 프레임에서 잔떨림 방지(보정)
+                    val insets = ViewCompat.getRootWindowInsets(binding.nextButton) ?: return
+                    val sysBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+                    val imeBottom = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                    val offset = (imeBottom - sysBottom).coerceAtLeast(0)
+                    binding.nextButton.translationY = -offset.toFloat()
+                }
+            }
+        )
     }
 }
