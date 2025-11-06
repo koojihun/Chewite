@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup_navigation"
+    app:startDestination="@+id/navigation_signup_agree">
+
+    <fragment
+        android:id="@+id/navigation_signup_agree"
+        android:name="com.chewite.app.ui.signup.agree.AgreeFragment"
+        android:label="@string/title_signup_agree"
+        tools:layout="@layout/fragment_signup_agree" />
+
+    <fragment
+        android:id="@+id/navigation_signup_profile"
+        android:name="com.chewite.app.ui.signup.profile.ProfileFragment"
+        android:label="@string/title_signup_profile"
+        tools:layout="@layout/fragment_signup_profile" />
+
+    <fragment
+        android:id="@+id/navigation_signup_finish"
+        android:name="com.chewite.app.ui.signup.finish.FinishFragment"
+        android:label="@string/title_signup_finish"
+        tools:layout="@layout/fragment_signup_finish" />
+</navigation>

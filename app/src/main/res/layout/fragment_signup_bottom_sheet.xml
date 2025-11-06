@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup_profile_bottom_sheet_select_album_button"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:padding="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+
+        android:layout_marginTop="16dp"
+        android:text="@string/signup_profile_bottom_sheet_select_album_button_text"
+        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:lineHeight="24sp"
+        android:letterSpacing="-0.0375"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="12dp"
+        app:rippleColor="?attr/colorControlHighlight"
+        style="?attr/materialButtonStyle"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup_profile_bottom_sheet_close_button"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        app:layout_constraintTop_toBottomOf="@id/signup_profile_bottom_sheet_select_album_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:padding="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+
+        android:text="@string/signup_profile_bottom_sheet_close_button_text"
+        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:lineHeight="24sp"
+        android:letterSpacing="-0.0375"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="12dp"
+        app:rippleColor="?attr/colorControlHighlight"
+        style="?attr/materialButtonStyle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

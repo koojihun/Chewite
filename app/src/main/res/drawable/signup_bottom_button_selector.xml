@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/signup_bottom_button_disabled_background"/>
+    <item android:drawable="@drawable/signup_bottom_button_enabled_background"/>
+</selector>

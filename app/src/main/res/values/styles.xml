@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavViewTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">18sp</item>
+    </style>
+
+    <style name="SignUpProfileBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SignUpProfileBottomSheet.Container</item>
+    </style>
+
+    <style name="SignUpProfileBottomSheet.Container" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/SignUpProfileBottomSheetRound</item>
+        <item name="backgroundTint">#F6F9FA</item>
+    </style>
+    <style name="SignUpProfileBottomSheetRound">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>

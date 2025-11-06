@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M12,2C17.523,2 22,6.477 22,12C22,17.523 17.523,22 12,22C6.477,22 2,17.523 2,12C2,6.477 6.477,2 12,2Z"
+      android:fillColor="@color/signup_checkbox_color_selector"/>
+  <path
+      android:pathData="M17.027,8.217C17.322,8.508 17.324,8.983 17.033,9.277L10.605,15.777C10.464,15.92 10.272,16 10.071,16C9.871,16 9.679,15.92 9.538,15.777L6.967,13.177C6.675,12.883 6.678,12.408 6.973,12.117C7.267,11.825 7.742,11.828 8.033,12.123L10.071,14.183L15.967,8.223C16.258,7.928 16.733,7.925 17.027,8.217Z"
+      android:fillColor="#ffffff"
+      android:fillType="evenOdd"/>
+</vector>

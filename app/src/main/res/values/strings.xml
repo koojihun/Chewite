@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Chewite</string>
+
+    <string name="title_signup_agree">이용 약관 동의</string>
+    <string name="title_signup_profile">프로필 설정</string>
+    <string name="title_signup_finish">회원가입 완료</string>
+
+    <string name="title_home">홈</string>
+    <string name="title_search">검색</string>
+    <string name="title_bookmark">북마크</string>
+    <string name="title_my">My</string>
+
+    <string name="login_text">반려동물의 건강과 취향을 고려한\n수제간식레시피를 만나보세요</string>
+    <string name="signup_title_text">서비스 이용을 위한\n약관에 동의해주세요</string>
+    <string name="signup_subtitle_text">서비스 이용을 위한 필수 약관 동의가 필요합니다.\n필수 항목에 동의하지 않을 경우 회원가입이 제한됩니다.</string>
+    <string name="signup_all_agree_text">전체 동의하기</string>
+    <string name="signup_must_text">[필수]</string>
+    <string name="signup_not_must_text">[선택]</string>
+    <string name="signup_service_text">서비스 이용약관</string>
+    <string name="signup_personal_info_text">개인정보 처리방침</string>
+    <string name="signup_marketing_text">마케팅 활용 동의</string>
+    <string name="signup_profile_bottom_sheet_select_album_button_text">앨범에서 선택</string>
+    <string name="signup_profile_bottom_sheet_close_button_text">닫기</string>
+</resources>
