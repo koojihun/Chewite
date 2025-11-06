@@ -5,13 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsAnimationCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.chewite.app.R
-import kotlin.math.max
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -23,22 +17,22 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        setTopPadding()
+        setSystemPaddings()
     }
 
     override fun setContentView(view: View?) {
         super.setContentView(view)
-        setTopPadding()
+        setSystemPaddings()
     }
 
     override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
         super.setContentView(view, params)
-        setTopPadding()
+        setSystemPaddings()
     }
 
     private fun setupSystemUI() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
     }
 
-    abstract fun setTopPadding()
+    abstract fun setSystemPaddings()
 }

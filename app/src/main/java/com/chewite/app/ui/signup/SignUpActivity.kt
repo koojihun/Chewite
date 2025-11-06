@@ -1,7 +1,6 @@
 package com.chewite.app.ui.signup
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsAnimationCompat
@@ -85,7 +84,7 @@ class SignUpActivity : BaseActivity(), NextButtonHost {
         }
     }
 
-    override fun setTopPadding() {
+    override fun setSystemPaddings() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -96,7 +95,7 @@ class SignUpActivity : BaseActivity(), NextButtonHost {
         ViewCompat.setWindowInsetsAnimationCallback(
             binding.nextButton,
             object : WindowInsetsAnimationCompat.Callback(
-                WindowInsetsAnimationCompat.Callback.DISPATCH_MODE_CONTINUE_ON_SUBTREE
+                DISPATCH_MODE_CONTINUE_ON_SUBTREE
             ) {
                 override fun onProgress(
                     insets: WindowInsetsCompat,
