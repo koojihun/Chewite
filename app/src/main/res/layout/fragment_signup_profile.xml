@@ -28,12 +28,11 @@
             android:id="@+id/signup_profile_image_imageview"
             android:layout_width="104dp"
             android:layout_height="104dp"
-            android:src="@drawable/signup_profile_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
         <ImageView
             android:id="@+id/signup_profile_camera_imageview"
             app:layout_constraintBottom_toBottomOf="@id/signup_profile_image_imageview"
@@ -77,6 +76,50 @@
             android:textColor="@color/gray_900"
             android:textSize="16sp"
             android:lineHeight="24sp"
-            android:letterSpacing="-0.0375"/>
+            android:letterSpacing="-0.0375"
+            android:maxLength="20"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <ImageView
+        android:id="@+id/signup_profile_nickname_remove_button"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintEnd_toStartOf="@id/signup_profile_nickname_length_textview"
+        app:layout_constraintTop_toTopOf="@id/signup_profile_nickname_edittext_layout"
+        app:layout_constraintBottom_toBottomOf="@id/signup_profile_nickname_edittext_layout"
+        android:src="@drawable/signup_profile_nickname_x_icon"
+        android:layout_marginEnd="8dp"/>
+    <TextView
+        android:id="@+id/signup_profile_nickname_length_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/signup_profile_nickname_edittext_layout"
+        app:layout_constraintTop_toTopOf="@id/signup_profile_nickname_edittext_layout"
+        app:layout_constraintBottom_toBottomOf="@id/signup_profile_nickname_edittext_layout"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/spoqa_han_sans_neo_regular"
+        android:gravity="center"
+        android:textColor="@color/gray_400"
+        android:textSize="12sp"
+        android:lineHeight="18sp"
+        android:letterSpacing="-0.0375" />
+    <LinearLayout
+        app:layout_constraintStart_toStartOf="@id/signup_profile_nickname_edittext_layout"
+        app:layout_constraintEnd_toEndOf="@id/signup_profile_nickname_edittext_layout"
+        app:layout_constraintTop_toBottomOf="@id/signup_profile_nickname_edittext_layout"
+        android:layout_width="328dp"
+        android:layout_height="22dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|bottom">
+        <TextView
+            android:id="@+id/signup_profile_nickname_status_textview"
+            android:layout_width="304dp"
+            android:layout_height="18dp"
+            android:text="@string/signup_profile_nickname_status_text"
+            android:fontFamily="@font/spoqa_han_sans_neo_regular"
+            android:gravity="start"
+            android:textColor="@color/gray_500"
+            android:textSize="12sp"
+            android:lineHeight="18sp"
+            android:letterSpacing="-0.0375" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@ package com.chewite.app.ui.signup
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -12,8 +14,6 @@ import com.chewite.app.databinding.ActivitySignupBinding
 import com.chewite.app.ui.BaseActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SignUpActivity : BaseActivity(), NextButtonHost {
@@ -80,6 +80,14 @@ class SignUpActivity : BaseActivity(), NextButtonHost {
                     binding.nextButton.isEnabled = enabled
                 }
             }
+        }
+    }
+
+    override fun setTopPadding() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
     }
 }

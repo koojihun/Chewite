@@ -2,6 +2,8 @@ package com.chewite.app.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.chewite.app.databinding.ActivityLoginBinding
 import com.chewite.app.ui.BaseActivity
 import com.chewite.app.ui.signup.SignUpActivity
@@ -34,6 +36,14 @@ class LoginActivity : BaseActivity() {
         binding.googleLoginBtn.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
             finish()
+        }
+    }
+
+    override fun setTopPadding() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
     }
 }

@@ -63,4 +63,12 @@ class SignUpViewModel : ViewModel() {
     fun updateNickname(text: String) {
         _nickname.value = text
     }
+
+    fun updateProfileImage(uri: Uri) {
+        _profileImage.value = uri
+    }
+
+    fun clearProfileImage() {
+        _profileImage.value = Uri.EMPTY
+    }
 }

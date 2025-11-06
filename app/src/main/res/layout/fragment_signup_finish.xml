@@ -4,35 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+    
+    <ImageView
+        android:layout_width="252dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="236dp">
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/finish_1"
-            android:layout_marginEnd="10dp"/>
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/finish_2"
-            android:layout_marginHorizontal="10dp"/>
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/finish_3"
-            android:layout_marginHorizontal="10dp"/>
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/finish_4"
-            android:layout_marginEnd="10dp"/>
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="240dp"
+        android:src="@drawable/signup_finish_image"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

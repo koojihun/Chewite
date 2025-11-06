@@ -1,31 +1,32 @@
 package com.chewite.app.ui.signup.profile
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.chewite.app.R
+import com.chewite.app.data.signup.NicknameGenerator
 import com.chewite.app.databinding.FragmentSignupProfileBinding
 import com.chewite.app.ui.signup.NextButtonHost
 import com.chewite.app.ui.signup.OnNextClickHandler
 import com.chewite.app.ui.signup.SignUpViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import kotlin.math.max
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment(), OnNextClickHandler {
 
@@ -33,18 +34,6 @@ class ProfileFragment : Fragment(), OnNextClickHandler {
     private val binding get() = _binding!!
 
     private val signUpViewModel: SignUpViewModel by activityViewModels()
-
-    private val pickImage = registerForActivityResult(
-        ActivityResultContracts.PickVisualMedia()
-    ) { uri ->
-        if (uri != null) {
-            binding.signupProfileImageImageview.load(uri) {
-                crossfade(true)
-                transformations(CircleCropTransformation())
-                ProfileImageUtils.saveToDownloadFolder(viewLifecycleOwner, requireContext(), uri)
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,26 +46,41 @@ class ProfileFragment : Fragment(), OnNextClickHandler {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setProfileImage()
         setProfileButton()
         setEditText()
         setNextButton()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val ime = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            v.updatePadding(bottom = max(ime, bars))   // 키보드/내비 둘 중 큰 값
-            insets
+
+        focusEditText()
+    }
+
+    private fun focusEditText() {
+        binding.signupProfileNicknameEdittext.post {
+            binding.signupProfileNicknameEdittext.requestFocus()
+            binding.signupProfileNicknameEdittext.showKeyboard()
+        }
+    }
+
+    private fun setProfileImage() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                signUpViewModel.profileImage
+                    .collectLatest { uri ->
+                        if (uri != Uri.EMPTY) {
+                            binding.signupProfileImageImageview.load(uri) {
+                                transformations(CircleCropTransformation())
+                            }
+                        } else {
+                            binding.signupProfileImageImageview.load(R.drawable.signup_profile_image)
+                        }
+                    }
+            }
         }
     }
 
     private fun setProfileButton() {
         binding.signupProfileSelectImageContainer.setOnClickListener {
-            ProfileBottomSheetFragment(
-                onSelectAlbumButtonClicked = {
-                    pickImage.launch(
-                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                    )
-                }
-            ).show(parentFragmentManager, "PickPhotoSheet")
+            ProfileBottomSheetFragment().show(parentFragmentManager, "PickPhotoSheet")
         }
     }
 
@@ -90,6 +94,18 @@ class ProfileFragment : Fragment(), OnNextClickHandler {
                 it?.toString().orEmpty()
             )
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                signUpViewModel.nickname.collect {
+                    binding.signupProfileNicknameLengthTextview.text = "${it.length}/20"
+                }
+            }
+        }
+        binding.signupProfileNicknameEdittext.setText(NicknameGenerator.generate())
+        binding.signupProfileNicknameEdittext.post {
+            binding.signupProfileNicknameEdittext.setSelection(binding.signupProfileNicknameEdittext.text?.length ?: 0)
+        }
+        binding.signupProfileNicknameRemoveButton.setOnClickListener { binding.signupProfileNicknameEdittext.setText("") }
     }
 
     private fun setNextButton() {
@@ -97,7 +113,7 @@ class ProfileFragment : Fragment(), OnNextClickHandler {
         host.setNextOnClick { onNextClicked(findNavController()) }
         host.bindNextEnabled(
             viewLifecycleOwner,
-            signUpViewModel.nickname.map { it.isNotEmpty() }.distinctUntilChanged()
+            signUpViewModel.nickname.map { it.isNotEmpty() && it.length >= 2 && it.length <= 20 }.distinctUntilChanged()
         )
     }
 
