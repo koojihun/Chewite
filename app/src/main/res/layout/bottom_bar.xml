@@ -17,7 +17,7 @@
             android:id="@+id/home_btn"
             android:layout_width="@dimen/bottom_bar_image_size"
             android:layout_height="@dimen/bottom_bar_image_size"
-            android:src="@drawable/ic_home"/>
+            android:src="@drawable/main_bottom_navbar_ic_home" />
         <TextView
             android:id="@+id/home_text"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:id="@+id/search_btn"
             android:layout_width="@dimen/bottom_bar_image_size"
             android:layout_height="@dimen/bottom_bar_image_size"
-            android:src="@drawable/ic_search"/>
+            android:src="@drawable/main_bottom_navbar_ic_search" />
         <TextView
             android:id="@+id/search_text"
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:id="@+id/bookmark_btn"
             android:layout_width="@dimen/bottom_bar_image_size"
             android:layout_height="@dimen/bottom_bar_image_size"
-            android:src="@drawable/ic_bookmark"/>
+            android:src="@drawable/main_bottom_navbar_ic_bookmark" />
         <TextView
             android:id="@+id/bookmark_text"
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:id="@+id/my_btn"
             android:layout_width="@dimen/bottom_bar_image_size"
             android:layout_height="@dimen/bottom_bar_image_size"
-            android:src="@drawable/ic_my"/>
+            android:src="@drawable/main_bottom_navbar_ic_my" />
         <TextView
             android:id="@+id/my_text"
             android:layout_width="match_parent"

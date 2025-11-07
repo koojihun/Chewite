@@ -1,27 +1,30 @@
 package com.chewite.app.ui
 
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.chewite.app.R
 import com.chewite.app.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setSplashScreen(splash)
-        initBottomNavView()
         setContentView(binding.root)
+        initBottomNavView()
     }
 
     private fun setSplashScreen(splash: SplashScreen) {
@@ -33,11 +36,52 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initBottomNavView() {
-        val navView: BottomNavigationView = binding.mainBottomNavView
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.navController
-        navView.setupWithNavController(navController)
+        navController = navHostFragment.navController
+
+        listOf(
+            binding.mainBottomNavHomeContainer to R.id.navigation_home,
+            binding.mainBottomNavSearchContainer to R.id.navigation_search,
+            binding.mainBottomNavBookmarkContainer to R.id.navigation_bookmark,
+            binding.mainBottomNavMyContainer to R.id.navigation_my
+        )
+            .forEach { (button, navigation) ->
+                button.setOnClickListener { navigateIfNeeded(navigation) }
+            }
+
+        bindDestinationChange()
+    }
+
+    private fun navigateIfNeeded(destId: Int) {
+        val current = navController.currentDestination?.id
+        if (current != destId) navController.navigate(destId)
+    }
+
+    private fun bindDestinationChange() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_home -> setSelectedTab(binding.mainBottomNavHomeContainer)
+                R.id.navigation_search -> setSelectedTab(binding.mainBottomNavSearchContainer)
+                R.id.navigation_bookmark -> setSelectedTab(binding.mainBottomNavBookmarkContainer)
+                R.id.navigation_my -> setSelectedTab(binding.mainBottomNavMyContainer)
+            }
+        }
+    }
+
+    private fun setSelectedTab(selected: ViewGroup) {
+        listOf(
+            binding.mainBottomNavHomeContainer, binding.mainBottomNavSearchContainer,
+            binding.mainBottomNavBookmarkContainer, binding.mainBottomNavMyContainer
+        ).forEach { container ->
+            val isSelected = (container == selected)
+            for (i in 0 until container.childCount) {
+                when (val child = container.getChildAt(i)) {
+                    is ImageView -> child.isSelected = isSelected
+                    is TextView -> child.isSelected = isSelected
+                }
+            }
+        }
     }
 
     override fun setSystemPaddings() {
