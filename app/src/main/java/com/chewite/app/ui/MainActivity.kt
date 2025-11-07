@@ -36,8 +36,8 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initBottomNavView() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
         listOf(
@@ -45,10 +45,9 @@ class MainActivity : BaseActivity() {
             binding.mainBottomNavSearchContainer to R.id.navigation_search,
             binding.mainBottomNavBookmarkContainer to R.id.navigation_bookmark,
             binding.mainBottomNavMyContainer to R.id.navigation_my
-        )
-            .forEach { (button, navigation) ->
-                button.setOnClickListener { navigateIfNeeded(navigation) }
-            }
+        ).forEach { (button, navigation) ->
+            button.setOnClickListener { navigateIfNeeded(navigation) }
+        }
 
         bindDestinationChange()
     }
@@ -71,8 +70,10 @@ class MainActivity : BaseActivity() {
 
     private fun setSelectedTab(selected: ViewGroup) {
         listOf(
-            binding.mainBottomNavHomeContainer, binding.mainBottomNavSearchContainer,
-            binding.mainBottomNavBookmarkContainer, binding.mainBottomNavMyContainer
+            binding.mainBottomNavHomeContainer,
+            binding.mainBottomNavSearchContainer,
+            binding.mainBottomNavBookmarkContainer,
+            binding.mainBottomNavMyContainer
         ).forEach { container ->
             val isSelected = (container == selected)
             for (i in 0 until container.childCount) {
