@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import com.chewite.app.R
 import com.chewite.app.databinding.ActivityMainBinding
 
@@ -25,6 +27,28 @@ class MainActivity : BaseActivity() {
         setSplashScreen(splash)
         setContentView(binding.root)
         initBottomNavView()
+        setBackPressed()
+    }
+
+    private fun setBackPressed() {
+        onBackPressedDispatcher.addCallback(this) {
+            val current = navController.currentDestination?.id
+
+            if (current == R.id.navigation_home) {
+                finish()
+            }
+
+            val popped = navController.popBackStack(R.id.navigation_home, false)
+            if (!popped) {
+                navController.navigate(
+                    R.id.navigation_home, null, navOptions {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    })
+            }
+        }
     }
 
     private fun setSplashScreen(splash: SplashScreen) {
