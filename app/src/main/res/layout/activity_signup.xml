@@ -52,6 +52,5 @@
         android:fontFamily="@font/spoqa_han_sans_neo_regular"
         android:textColor="@color/signup_bottom_button_text_color_selector"
         android:textSize="14sp"
-        android:lineHeight="24sp"
-        android:letterSpacing="-0.0375" />
+        android:lineHeight="24sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="BottomNavViewTextStyle" parent="TextAppearance.AppCompat.Caption">
+    <!-- MainActivity -->
+    <style name="MainBottomNavNoIndicator">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+    <style name="BottomNavViewTextStyle" parent="@style/TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/spoqa_han_sans_neo_regular</item>
         <item name="android:textSize">12sp</item>
         <item name="android:lineHeight">18sp</item>
     </style>

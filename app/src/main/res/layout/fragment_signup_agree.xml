@@ -30,8 +30,7 @@
         android:fontFamily="@font/spoqa_han_sans_neo_regular"
         android:textColor="@color/gray_500"
         android:textSize="14sp"
-        android:lineHeight="20sp"
-        android:letterSpacing="-0.0375"/>
+        android:lineHeight="20sp" />
 
     <LinearLayout
         android:id="@+id/signup_all_agree_button"
@@ -59,8 +58,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/gray_900"
             android:textSize="16sp"
-            android:lineHeight="24sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="24sp" />
     </LinearLayout>
     
     <LinearLayout
@@ -86,8 +84,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/primary_500"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,8 +93,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/gray_900"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -132,8 +128,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/primary_500"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,8 +137,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/gray_900"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -178,8 +172,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/gray_500"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -188,8 +181,7 @@
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
             android:textColor="@color/gray_900"
             android:textSize="14sp"
-            android:lineHeight="20sp"
-            android:letterSpacing="-0.0375"/>
+            android:lineHeight="20sp" />
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -23,10 +23,11 @@
         android:text="@string/signup_profile_bottom_sheet_select_album_button_text"
         android:fontFamily="@font/spoqa_han_sans_neo_regular"
         android:gravity="center"
+
         android:textColor="@color/black"
         android:textSize="16sp"
         android:lineHeight="24sp"
-        android:letterSpacing="-0.0375"
+
         app:backgroundTint="@color/white"
         app:cornerRadius="12dp"
         app:rippleColor="?attr/colorControlHighlight"
@@ -56,7 +57,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:lineHeight="24sp"
-        android:letterSpacing="-0.0375"
+
         app:backgroundTint="@color/white"
         app:cornerRadius="12dp"
         app:rippleColor="?attr/colorControlHighlight"

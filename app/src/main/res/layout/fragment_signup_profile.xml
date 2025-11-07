@@ -76,7 +76,6 @@
             android:textColor="@color/gray_900"
             android:textSize="16sp"
             android:lineHeight="24sp"
-            android:letterSpacing="-0.0375"
             android:maxLength="20"/>
     </com.google.android.material.textfield.TextInputLayout>
     <ImageView
@@ -100,8 +99,7 @@
         android:gravity="center"
         android:textColor="@color/gray_400"
         android:textSize="12sp"
-        android:lineHeight="18sp"
-        android:letterSpacing="-0.0375" />
+        android:lineHeight="18sp" />
     <LinearLayout
         app:layout_constraintStart_toStartOf="@id/signup_profile_nickname_edittext_layout"
         app:layout_constraintEnd_toEndOf="@id/signup_profile_nickname_edittext_layout"
@@ -119,7 +117,6 @@
             android:gravity="start"
             android:textColor="@color/gray_500"
             android:textSize="12sp"
-            android:lineHeight="18sp"
-            android:letterSpacing="-0.0375" />
+            android:lineHeight="18sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

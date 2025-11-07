@@ -33,7 +33,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initBottomNavView() {
-        val navView: BottomNavigationView = binding.bottomNavView
+        val navView: BottomNavigationView = binding.mainBottomNavView
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController

@@ -1,5 +1,6 @@
 package com.chewite.app.ui.my
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewite.app.databinding.FragmentMyBinding
+import com.chewite.app.ui.signup.SignUpActivity
 
 class MyFragment : Fragment() {
 
@@ -33,6 +35,11 @@ class MyFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.userBtn.setOnClickListener { startActivity(Intent(requireContext(), SignUpActivity::class.java)) }
     }
 
     override fun onDestroyView() {

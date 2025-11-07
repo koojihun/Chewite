@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.fragment.app.FragmentContainerView
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:layout_constraintBottom_toTopOf="@id/main_bottom_nav_view_container"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,17 +18,48 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_bottom_nav_view_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemRippleColor="@null"
-        app:itemIconTint="@color/bottom_nav_view_color_selector"
-        app:itemTextColor="@color/bottom_nav_view_color_selector"
-        app:itemTextAppearanceActive="@style/BottomNavViewTextStyle"/>
+
+        android:background="@color/gray_100">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bottom_nav_view"
+
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:background="@drawable/main_bottom_navbar_background"
+
+            app:itemIconSize="24dp"
+
+            app:itemActiveIndicatorStyle="@style/MainBottomNavNoIndicator"
+
+            app:menu="@menu/bottom_nav_menu"
+
+            app:labelVisibilityMode="labeled"
+
+            app:itemRippleColor="@null"
+            app:itemIconTint="@color/main_bottom_nav_icon_color_selector"
+            app:itemTextColor="@color/main_bottom_nav_text_color_selector"
+
+            app:itemTextAppearanceActive="@style/BottomNavViewTextStyle"
+            app:itemTextAppearanceInactive="@style/BottomNavViewTextStyle"
+
+            app:itemHorizontalTranslationEnabled="false"
+            app:itemTextAppearanceActiveBoldEnabled="false"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
