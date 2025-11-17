@@ -12,6 +12,24 @@
         tools:layout="@layout/fragment_signup_agree" />
 
     <fragment
+        android:id="@+id/navigation_signup_agree_service"
+        android:name="com.chewite.app.ui.signup.agree.AgreeServiceFragment"
+        android:label="@string/title_signup_agree_service"
+        tools:layout="@layout/fragment_signup_agree_service" />
+
+    <fragment
+        android:id="@+id/navigation_signup_agree_personal_info"
+        android:name="com.chewite.app.ui.signup.agree.AgreePersonalInfoFragment"
+        android:label="@string/title_signup_agree_personal_info"
+        tools:layout="@layout/fragment_signup_agree_personal_info" />
+
+    <fragment
+        android:id="@+id/navigation_signup_agree_marketing"
+        android:name="com.chewite.app.ui.signup.agree.AgreeMarketingFragment"
+        android:label="@string/title_signup_agree_marketing"
+        tools:layout="@layout/fragment_signup_agree_marketing" />
+
+    <fragment
         android:id="@+id/navigation_signup_profile"
         android:name="com.chewite.app.ui.signup.profile.ProfileFragment"
         android:label="@string/title_signup_profile"

@@ -40,6 +40,12 @@ android {
 
 dependencies {
 
+    // Credential Manager
+    implementation(libs.androidx.credentials)
+    // Google Identity (Sign in with Google for Credential Manager)
+    implementation(libs.googleid)
+
+
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.coil)
 

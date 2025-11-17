@@ -1,17 +1,16 @@
-package com.chewite.app.ui.signup.finish
+package com.chewite.app.ui.signup.agree
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.chewite.app.databinding.FragmentSignupFinishBinding
-import com.chewite.app.ui.MainActivity
+import androidx.navigation.fragment.findNavController
+import com.chewite.app.databinding.FragmentSignupAgreeMarketingBinding
 
-class FinishFragment : Fragment() {
+class AgreeMarketingFragment : Fragment() {
 
-    private var _binding: FragmentSignupFinishBinding? = null
+    private var _binding: FragmentSignupAgreeMarketingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,15 +18,14 @@ class FinishFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSignupFinishBinding.inflate(inflater, container, false)
+        _binding = FragmentSignupAgreeMarketingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.nextButton.setOnClickListener {
-            startActivity(Intent(requireActivity(), MainActivity::class.java))
-            requireActivity().finishAffinity()
+        binding.xBtn.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

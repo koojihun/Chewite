@@ -2,8 +2,13 @@
     <string name="app_name">Chewite</string>
 
     <string name="title_signup_agree">이용 약관 동의</string>
+    <string name="title_signup_agree_service">서비스 이용약관</string>
+    <string name="title_signup_agree_personal_info">개인정보 처리방침</string>
+    <string name="title_signup_agree_marketing">마케팅 활용 동의</string>
     <string name="title_signup_profile">프로필 설정</string>
     <string name="title_signup_finish">회원가입 완료</string>
+
+    <string name="google_server_client_id">138390225953-muje3f3etirvc2ab66nqcj53u3v60hds.apps.googleusercontent.com</string>
 
     <string name="title_home">홈</string>
     <string name="title_search">검색</string>

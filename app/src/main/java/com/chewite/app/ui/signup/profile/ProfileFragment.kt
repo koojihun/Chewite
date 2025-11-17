@@ -13,22 +13,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.chewite.app.R
 import com.chewite.app.data.signup.NicknameGenerator
 import com.chewite.app.databinding.FragmentSignupProfileBinding
-import com.chewite.app.ui.signup.NextButtonHost
-import com.chewite.app.ui.signup.OnNextClickHandler
 import com.chewite.app.ui.signup.SignUpViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class ProfileFragment : Fragment(), OnNextClickHandler {
+class ProfileFragment : Fragment() {
 
     private var _binding: FragmentSignupProfileBinding? = null
     private val binding get() = _binding!!
@@ -109,16 +103,12 @@ class ProfileFragment : Fragment(), OnNextClickHandler {
     }
 
     private fun setNextButton() {
-        val host = requireActivity() as NextButtonHost
-        host.setNextOnClick { onNextClicked(findNavController()) }
-        host.bindNextEnabled(
-            viewLifecycleOwner,
-            signUpViewModel.nickname.map { it.isNotEmpty() && it.length >= 2 && it.length <= 20 }.distinctUntilChanged()
-        )
-    }
-
-    override fun onNextClicked(navController: NavController) {
-        navController.navigate(R.id.navigation_signup_finish)
+//        val host = requireActivity() as NextButtonHost
+//        host.setNextOnClick { onNextClicked(findNavController()) }
+//        host.bindNextEnabled(
+//            viewLifecycleOwner,
+//            signUpViewModel.nickname.map { it.isNotEmpty() && it.length >= 2 && it.length <= 20 }.distinctUntilChanged()
+//        )
     }
 
     override fun onDestroyView() {

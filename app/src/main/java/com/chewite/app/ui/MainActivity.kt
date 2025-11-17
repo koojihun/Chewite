@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.addCallback
-import androidx.core.splashscreen.SplashScreen
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
@@ -21,10 +19,8 @@ class MainActivity : BaseActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setSplashScreen(splash)
         setContentView(binding.root)
         initBottomNavView()
         setBackPressed()
@@ -48,14 +44,6 @@ class MainActivity : BaseActivity() {
                         launchSingleTop = true
                     })
             }
-        }
-    }
-
-    private fun setSplashScreen(splash: SplashScreen) {
-        val MIN_DURATION = 1000L
-        val start = System.currentTimeMillis()
-        splash.setKeepOnScreenCondition {
-            System.currentTimeMillis() - start < MIN_DURATION
         }
     }
 

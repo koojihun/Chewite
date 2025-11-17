@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.chewite.app.R
 import com.chewite.app.data.signup.CONSENT_MARKETING_KEY
@@ -17,14 +16,10 @@ import com.chewite.app.data.signup.CONSENT_PERSONAL_INFO_KEY
 import com.chewite.app.data.signup.CONSENT_SERVICE_KEY
 import com.chewite.app.data.signup.ConsentState
 import com.chewite.app.databinding.FragmentSignupAgreeBinding
-import com.chewite.app.ui.signup.NextButtonHost
-import com.chewite.app.ui.signup.OnNextClickHandler
 import com.chewite.app.ui.signup.SignUpViewModel
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class AgreeFragment : Fragment(), OnNextClickHandler {
+class AgreeFragment : Fragment() {
 
     private var _binding: FragmentSignupAgreeBinding? = null
     private val binding get() = _binding!!
@@ -42,6 +37,7 @@ class AgreeFragment : Fragment(), OnNextClickHandler {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setLeftButton()
         setAgreeAllButton()
         setServiceButton()
         setPersonalInfoButton()
@@ -54,11 +50,8 @@ class AgreeFragment : Fragment(), OnNextClickHandler {
         }
     }
 
-    private fun setNextButton() {
-        val host = requireActivity() as NextButtonHost
-        host.setNextOnClick { onNextClicked(findNavController()) }
-        host.bindNextEnabled(viewLifecycleOwner,
-            signUpViewModel.consent.map { it.isAgreedAllRequired }.distinctUntilChanged())
+    private fun setLeftButton() {
+        binding.leftBtn.setOnClickListener { requireActivity().finish() }
     }
 
     private fun setAgreeAllButton() {
@@ -69,15 +62,30 @@ class AgreeFragment : Fragment(), OnNextClickHandler {
     }
 
     private fun setServiceButton() {
-        binding.signupServiceAgreeButton.setOnClickListener { toggle(CONSENT_SERVICE_KEY) }
+        binding.signupServiceAgreeButton.setOnClickListener {
+            toggle(CONSENT_SERVICE_KEY)
+        }
+        binding.signupServiceAgreeRightArrow.setOnClickListener {
+            findNavController().navigate(R.id.navigation_signup_agree_service)
+        }
     }
 
     private fun setPersonalInfoButton() {
-        binding.signupPersonalInfoAgreeButton.setOnClickListener { toggle(CONSENT_PERSONAL_INFO_KEY) }
+        binding.signupPersonalInfoAgreeButton.setOnClickListener {
+            toggle(CONSENT_PERSONAL_INFO_KEY)
+        }
+        binding.signupPersonalInfoAgreeRightArrow.setOnClickListener {
+            findNavController().navigate(R.id.navigation_signup_agree_personal_info)
+        }
     }
 
     private fun setMarketingButton() {
-        binding.signupMarketingAgreeButton.setOnClickListener { toggle(CONSENT_MARKETING_KEY) }
+        binding.signupMarketingAgreeButton.setOnClickListener {
+            toggle(CONSENT_MARKETING_KEY)
+        }
+        binding.signupMarketingAgreeRightArrow.setOnClickListener {
+            findNavController().navigate(R.id.navigation_signup_agree_marketing)
+        }
     }
 
     private fun toggle(key: String) {
@@ -85,7 +93,6 @@ class AgreeFragment : Fragment(), OnNextClickHandler {
             .firstOrNull { it.key == key }?.agreed ?: false
         signUpViewModel.setAgreed(key, !current)
     }
-
 
     private fun render(state: ConsentState) {
         fun agreedOf(key: String) =
@@ -99,8 +106,17 @@ class AgreeFragment : Fragment(), OnNextClickHandler {
         binding.signupAllAgreeButton.isSelected = all
     }
 
-    override fun onNextClicked(navController: NavController) {
-        navController.navigate(R.id.navigation_signup_profile)
+    private fun setNextButton() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                signUpViewModel.consent.collect { state ->
+                    binding.nextButton.isEnabled = state.isAgreedAllRequired
+                }
+            }
+        }
+        binding.nextButton.setOnClickListener {
+            findNavController().navigate(R.id.navigation_signup_finish)
+        }
     }
 
     override fun onDestroyView() {

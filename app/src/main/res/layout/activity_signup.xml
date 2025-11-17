@@ -6,51 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_height"
-        android:background="@color/white">
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/left_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_left_no_tail"
-            android:tint="@color/gray_900" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/signup_nav_host"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/next_button"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/signup_navigation"
         android:name="androidx.navigation.fragment.NavHostFragment"/>
 
-    <Button
-        android:id="@+id/next_button"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/signup_bottom_button_selector"
-        app:backgroundTint="@null"
-        android:fontFamily="@font/spoqa_han_sans_neo_regular"
-        android:textColor="@color/signup_bottom_button_text_color_selector"
-        android:textSize="14sp"
-        android:lineHeight="24sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
