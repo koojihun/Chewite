@@ -1,5 +1,6 @@
 package com.chewite.app.ui.my
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewite.app.databinding.FragmentMyBinding
+import com.chewite.app.ui.my.edit_profile.EditProfileActivity
 
 class MyFragment : Fragment() {
 
@@ -15,9 +17,7 @@ class MyFragment : Fragment() {
     private lateinit var myViewModel: MyViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMyBinding.inflate(inflater, container, false)
         return binding.root
@@ -26,6 +26,17 @@ class MyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        setEditProfileButton()
+    }
+
+    private fun setEditProfileButton() {
+        binding.profileEditButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    requireActivity(), EditProfileActivity::class.java
+                )
+            )
+        }
     }
 
     override fun onDestroyView() {

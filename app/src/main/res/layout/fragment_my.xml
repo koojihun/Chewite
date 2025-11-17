@@ -63,6 +63,7 @@
             app:layout_constraintTop_toTopOf="@id/profile_image" />
 
         <ImageView
+            android:id="@+id/profile_edit_button"
             android:layout_width="71dp"
             android:layout_height="24dp"
             android:layout_marginStart="12dp"
