@@ -98,14 +98,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/main_bottom_nav_search_icon"
+                    android:id="@+id/main_bottom_nav_recipe_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
 
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="4dp"
 
-                    android:src="@drawable/main_bottom_navbar_ic_search"
+                    android:src="@drawable/main_bottom_navbar_ic_recipe"
 
                     app:tint="@color/main_bottom_nav_icon_color_selector" />
 
@@ -118,7 +118,7 @@
 
                     android:gravity="center"
                     android:lineHeight="18sp"
-                    android:text="검색"
+                    android:text="레시피"
                     android:textColor="@color/main_bottom_nav_text_color_selector"
                     android:textSize="12sp" />
 

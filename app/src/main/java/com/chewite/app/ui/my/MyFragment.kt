@@ -1,45 +1,31 @@
 package com.chewite.app.ui.my
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewite.app.databinding.FragmentMyBinding
-import com.chewite.app.ui.signup.SignUpActivity
 
 class MyFragment : Fragment() {
 
     private var _binding: FragmentMyBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var myViewModel: MyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val myViewModel =
-            ViewModelProvider(this).get(MyViewModel::class.java)
-
         _binding = FragmentMyBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        myViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userBtn.setOnClickListener { startActivity(Intent(requireContext(), SignUpActivity::class.java)) }
+        myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
     }
 
     override fun onDestroyView() {
