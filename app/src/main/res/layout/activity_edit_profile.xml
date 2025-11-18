@@ -82,8 +82,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_select_image_container"
-        app:placeholderText="닉네임을 입력해주세요">
+        app:layout_constraintTop_toBottomOf="@id/profile_select_image_container">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/profile_nickname_edittext"
@@ -102,6 +101,7 @@
             android:singleLine="true"
             android:textColor="@color/gray_900"
             android:textColorHighlight="@color/primary_500"
+            android:hint="닉네임을 입력해주세요"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
