@@ -109,10 +109,10 @@
         android:id="@+id/profile_nickname_remove_button"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="47dp"
         android:src="@drawable/my_profile_nickname_x_icon"
         app:layout_constraintBottom_toBottomOf="@id/profile_nickname_edittext_layout"
-        app:layout_constraintEnd_toStartOf="@id/profile_nickname_length_textview"
+        app:layout_constraintEnd_toEndOf="@id/profile_nickname_edittext_layout"
         app:layout_constraintTop_toTopOf="@id/profile_nickname_edittext_layout" />
 
     <TextView
