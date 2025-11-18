@@ -10,15 +10,16 @@
         <item name="android:lineHeight">18sp</item>
     </style>
 
-    <style name="SignUpProfileBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/SignUpProfileBottomSheet.Container</item>
+    <style name="MyProfileBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MyProfileBottomSheet.Container</item>
     </style>
 
-    <style name="SignUpProfileBottomSheet.Container" parent="Widget.Material3.BottomSheet.Modal">
-        <item name="shapeAppearance">@style/SignUpProfileBottomSheetRound</item>
+    <style name="MyProfileBottomSheet.Container" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/MyProfileBottomSheetRound</item>
         <item name="backgroundTint">#F6F9FA</item>
     </style>
-    <style name="SignUpProfileBottomSheetRound">
+
+    <style name="MyProfileBottomSheetRound">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
