@@ -71,7 +71,7 @@
             android:background="@drawable/my_edit_profile_button_ripple_background"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/profile_edit_button"
+            android:src="@drawable/my_profile_edit_button"
             app:layout_constraintBottom_toBottomOf="@id/profile_image"
             app:layout_constraintStart_toEndOf="@id/profile_image" />
 
