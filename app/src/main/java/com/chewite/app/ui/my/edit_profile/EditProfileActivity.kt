@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsAnimationCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
@@ -18,6 +19,7 @@ import com.chewite.app.databinding.ActivityEditProfileBinding
 import com.chewite.app.ui.BaseActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlin.math.max
 
 class EditProfileActivity : BaseActivity() {
 
@@ -41,6 +43,24 @@ class EditProfileActivity : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setUpImeAnimation()
+    }
+
+    private fun setUpImeAnimation() {
+        ViewCompat.setWindowInsetsAnimationCallback(
+            binding.main, object : WindowInsetsAnimationCompat.Callback(
+                DISPATCH_MODE_CONTINUE_ON_SUBTREE
+            ) {
+                override fun onProgress(
+                    insets: WindowInsetsCompat, runningAnimations: List<WindowInsetsAnimationCompat>
+                ): WindowInsetsCompat {
+                    val imeBottom = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                    val systemBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+                    val extra = max(imeBottom - systemBottom, 0)
+                    binding.bottomBar.translationY = -extra.toFloat()
+                    return insets
+                }
+            })
     }
 
     private fun setBackButton() {
