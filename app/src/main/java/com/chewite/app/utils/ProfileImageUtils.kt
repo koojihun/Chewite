@@ -1,4 +1,4 @@
-package com.chewite.app.ui.signup.profile
+package com.chewite.app.utils
 
 import android.content.ContentValues
 import android.content.Context

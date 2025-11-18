@@ -31,11 +31,7 @@ class MyFragment : Fragment() {
 
     private fun setEditProfileButton() {
         binding.profileEditButton.setOnClickListener {
-            startActivity(
-                Intent(
-                    requireActivity(), EditProfileActivity::class.java
-                )
-            )
+            startActivity(Intent(requireActivity(), EditProfileActivity::class.java))
         }
     }
 

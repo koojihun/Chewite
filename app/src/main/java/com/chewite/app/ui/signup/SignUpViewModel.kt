@@ -1,6 +1,5 @@
 package com.chewite.app.ui.signup
 
-import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.chewite.app.data.signup.CONSENT_MARKETING_KEY
 import com.chewite.app.data.signup.CONSENT_PERSONAL_INFO_KEY
@@ -24,12 +23,6 @@ class SignUpViewModel : ViewModel() {
         )
     )
     val consent: StateFlow<ConsentState> = _consent
-
-    private val _profileImage = MutableStateFlow<Uri>(Uri.EMPTY)
-    val profileImage: StateFlow<Uri> = _profileImage
-
-    private val _nickname = MutableStateFlow("")
-    val nickname: StateFlow<String> = _nickname
 
     fun agreeAll() {
         listOf(CONSENT_SERVICE_KEY, CONSENT_PERSONAL_INFO_KEY, CONSENT_MARKETING_KEY).forEach {
@@ -58,17 +51,5 @@ class SignUpViewModel : ViewModel() {
         return Instant.ofEpochMilli(now)
             .atZone(ZoneId.of("Asia/Seoul"))
             .format(formatter)
-    }
-
-    fun updateNickname(text: String) {
-        _nickname.value = text
-    }
-
-    fun updateProfileImage(uri: Uri) {
-        _profileImage.value = uri
-    }
-
-    fun clearProfileImage() {
-        _profileImage.value = Uri.EMPTY
     }
 }

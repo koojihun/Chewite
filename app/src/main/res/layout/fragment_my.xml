@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/signup_profile_image" />
+            android:src="@drawable/my_profile_default_image" />
 
         <TextView
             android:id="@+id/nickname_textview"

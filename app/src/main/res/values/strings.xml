@@ -24,10 +24,10 @@
     <string name="signup_service_text">서비스 이용약관</string>
     <string name="signup_personal_info_text">개인정보 처리방침</string>
     <string name="signup_marketing_text">마케팅 활용 동의</string>
-    <string name="signup_profile_bottom_sheet_select_album_button_text">앨범에서 선택</string>
-    <string name="signup_profile_bottom_sheet_delete_button_text">프로필 사진 삭제</string>
-    <string name="signup_profile_bottom_sheet_close_button_text">닫기</string>
-    <string name="signup_profile_nickname_status_text">2~20자까지 입력할 수 있어요</string>
 
+    <string name="my_profile_bottom_sheet_select_album_button_text">앨범에서 선택</string>
+    <string name="my_profile_bottom_sheet_delete_button_text">프로필 사진 삭제</string>
+    <string name="my_profile_bottom_sheet_close_button_text">닫기</string>
+    <string name="my_profile_nickname_status_text">2~20자까지 입력할 수 있어요</string>
     <string name="my_quit_text"><u>회원탈퇴</u></string>
 </resources>

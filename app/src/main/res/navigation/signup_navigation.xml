@@ -30,12 +30,6 @@
         tools:layout="@layout/fragment_signup_agree_marketing" />
 
     <fragment
-        android:id="@+id/navigation_signup_profile"
-        android:name="com.chewite.app.ui.signup.profile.ProfileFragment"
-        android:label="@string/title_signup_profile"
-        tools:layout="@layout/fragment_signup_profile" />
-
-    <fragment
         android:id="@+id/navigation_signup_finish"
         android:name="com.chewite.app.ui.signup.finish.FinishFragment"
         android:label="@string/title_signup_finish"
