@@ -2,9 +2,11 @@
     <string name="app_name">Chewite</string>
 
     <string name="title_signup_agree">이용 약관 동의</string>
-    <string name="title_signup_agree_service">서비스 이용약관</string>
-    <string name="title_signup_agree_personal_info">개인정보 처리방침</string>
-    <string name="title_signup_agree_marketing">마케팅 활용 동의</string>
+
+    <string name="terms_service_title">서비스 이용약관</string>
+    <string name="terms_personal_info_title">개인정보 처리방침</string>
+    <string name="terms_marketing_title">마케팅 활용 동의</string>
+
     <string name="title_signup_profile">프로필 설정</string>
     <string name="title_signup_finish">회원가입 완료</string>
 

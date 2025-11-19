@@ -37,7 +37,7 @@
 
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:lineHeight="24sp"
+            android:lineHeight="24dp"
 
             app:backgroundTint="@color/white"
             app:rippleColor="?attr/colorControlHighlight"
@@ -66,7 +66,7 @@
 
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:lineHeight="24sp"
+            android:lineHeight="24dp"
 
             app:backgroundTint="@color/white"
             app:rippleColor="?attr/colorControlHighlight"
@@ -107,7 +107,7 @@
 
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:lineHeight="24sp"
+        android:lineHeight="24dp"
 
         app:backgroundTint="@color/white"
         app:cornerRadius="12dp"

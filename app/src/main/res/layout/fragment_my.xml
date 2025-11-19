@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/spoqa_han_sans_neo_bold"
-            android:lineHeight="28sp"
+            android:lineHeight="28dp"
             android:text="마이페이지"
             android:textColor="@color/gray_900"
             android:textSize="16sp" />
@@ -54,7 +54,7 @@
             android:layout_marginStart="12dp"
 
             android:fontFamily="@font/spoqa_han_sans_neo_medium"
-            android:lineHeight="24sp"
+            android:lineHeight="24dp"
 
             android:text="산골짝에 다람쥐 14"
             android:textColor="@color/gray_900"
@@ -94,7 +94,7 @@
 
             android:layout_marginStart="16dp"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
-            android:lineHeight="20sp"
+            android:lineHeight="20dp"
 
             android:text="관심분야 설정"
 
@@ -115,6 +115,7 @@
         app:layout_constraintTop_toBottomOf="@id/set_interest_layout">
 
         <LinearLayout
+            android:id="@+id/service_button"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/my_text_button_ripple_background"
@@ -131,13 +132,14 @@
                 android:layout_marginStart="16dp"
 
                 android:fontFamily="@font/spoqa_han_sans_neo_regular"
-                android:lineHeight="20sp"
+                android:lineHeight="20dp"
                 android:text="서비스 이용약관"
                 android:textColor="@color/gray_900"
                 android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/personal_info_button_button"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/my_text_button_ripple_background"
@@ -155,13 +157,14 @@
                 android:layout_marginStart="16dp"
 
                 android:fontFamily="@font/spoqa_han_sans_neo_regular"
-                android:lineHeight="20sp"
+                android:lineHeight="20dp"
                 android:text="개인정보 처리방침"
                 android:textColor="@color/gray_900"
                 android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/marketing_button"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/my_text_button_ripple_background"
@@ -178,7 +181,7 @@
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
-                android:lineHeight="20sp"
+                android:lineHeight="20dp"
 
                 android:text="마케팅 활용 동의"
 
@@ -211,7 +214,7 @@
 
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
-            android:lineHeight="20sp"
+            android:lineHeight="20dp"
             android:text="로그아웃"
             android:textColor="@color/gray_900"
             android:textSize="14sp"
@@ -234,7 +237,7 @@
 
             android:layout_marginStart="16dp"
             android:fontFamily="@font/spoqa_han_sans_neo_regular"
-            android:lineHeight="18sp"
+            android:lineHeight="18dp"
             android:text="@string/my_quit_text"
             android:textColor="@color/gray_500"
             android:textSize="12sp" />

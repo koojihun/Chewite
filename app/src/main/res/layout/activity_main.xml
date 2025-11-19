@@ -76,7 +76,7 @@
                     android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
                     android:gravity="center"
-                    android:lineHeight="18sp"
+                    android:lineHeight="18dp"
                     android:text="홈"
                     android:textColor="@color/main_bottom_nav_text_color_selector"
                     android:textSize="12sp" />
@@ -117,7 +117,7 @@
                     android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
                     android:gravity="center"
-                    android:lineHeight="18sp"
+                    android:lineHeight="18dp"
                     android:text="레시피"
                     android:textColor="@color/main_bottom_nav_text_color_selector"
                     android:textSize="12sp" />
@@ -158,7 +158,7 @@
                     android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
                     android:gravity="center"
-                    android:lineHeight="18sp"
+                    android:lineHeight="18dp"
                     android:text="북마크"
                     android:textColor="@color/main_bottom_nav_text_color_selector"
                     android:textSize="12sp" />
@@ -199,7 +199,7 @@
                     android:fontFamily="@font/spoqa_han_sans_neo_regular"
 
                     android:gravity="center"
-                    android:lineHeight="18sp"
+                    android:lineHeight="18dp"
                     android:text="My"
                     android:textColor="@color/main_bottom_nav_text_color_selector"
                     android:textSize="12sp" />

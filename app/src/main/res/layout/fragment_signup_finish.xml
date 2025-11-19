@@ -33,7 +33,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/signup_bottom_button_selector"
         android:fontFamily="@font/spoqa_han_sans_neo_regular"
-        android:lineHeight="24sp"
+        android:lineHeight="24dp"
         android:text="츄이트 시작하기"
         android:textColor="@color/signup_bottom_button_text_color_selector"
         android:textSize="14sp"

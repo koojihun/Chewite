@@ -1,5 +1,6 @@
 package com.chewite.app.ui.signup.agree
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,10 @@ import com.chewite.app.data.signup.CONSENT_MARKETING_KEY
 import com.chewite.app.data.signup.CONSENT_PERSONAL_INFO_KEY
 import com.chewite.app.data.signup.CONSENT_SERVICE_KEY
 import com.chewite.app.data.signup.ConsentState
+import com.chewite.app.data.terms.TermsType
 import com.chewite.app.databinding.FragmentSignupAgreeBinding
 import com.chewite.app.ui.signup.SignUpViewModel
+import com.chewite.app.ui.terms.TermsActivity
 import kotlinx.coroutines.launch
 
 class AgreeFragment : Fragment() {
@@ -61,31 +64,33 @@ class AgreeFragment : Fragment() {
         }
     }
 
+    private fun startTermsActivity(termsType: TermsType) {
+        startActivity(
+            Intent(requireActivity(), TermsActivity::class.java).putExtra(
+                TermsType.EXTRA_KEY, termsType.name
+            )
+        )
+    }
+
     private fun setServiceButton() {
         binding.signupServiceAgreeButton.setOnClickListener {
             toggle(CONSENT_SERVICE_KEY)
         }
-        binding.signupServiceAgreeRightArrow.setOnClickListener {
-            findNavController().navigate(R.id.navigation_signup_agree_service)
-        }
+        binding.signupServiceAgreeRightArrow.setOnClickListener { startTermsActivity(TermsType.SERVICE) }
     }
 
     private fun setPersonalInfoButton() {
         binding.signupPersonalInfoAgreeButton.setOnClickListener {
             toggle(CONSENT_PERSONAL_INFO_KEY)
         }
-        binding.signupPersonalInfoAgreeRightArrow.setOnClickListener {
-            findNavController().navigate(R.id.navigation_signup_agree_personal_info)
-        }
+        binding.signupPersonalInfoAgreeRightArrow.setOnClickListener { startTermsActivity(TermsType.PERSONAL_INFO) }
     }
 
     private fun setMarketingButton() {
         binding.signupMarketingAgreeButton.setOnClickListener {
             toggle(CONSENT_MARKETING_KEY)
         }
-        binding.signupMarketingAgreeRightArrow.setOnClickListener {
-            findNavController().navigate(R.id.navigation_signup_agree_marketing)
-        }
+        binding.signupMarketingAgreeRightArrow.setOnClickListener { startTermsActivity(TermsType.MARKETING) }
     }
 
     private fun toggle(key: String) {
