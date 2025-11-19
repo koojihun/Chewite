@@ -3,8 +3,6 @@ package com.chewite.app.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
@@ -28,14 +26,6 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
         setXButtonClickListener()
         setLoginButtonsClickListener()
-    }
-
-    override fun setSystemPaddings() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     private fun setXButtonClickListener() = binding.xBtn.setOnClickListener { finish() }

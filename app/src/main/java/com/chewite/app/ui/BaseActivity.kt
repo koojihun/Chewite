@@ -5,9 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 
-abstract class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,22 +19,26 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        setSystemPaddings()
     }
 
     override fun setContentView(view: View?) {
         super.setContentView(view)
-        setSystemPaddings()
+        view?.let { setSystemPaddings(it) }
     }
 
     override fun setContentView(view: View?, params: ViewGroup.LayoutParams?) {
         super.setContentView(view, params)
-        setSystemPaddings()
     }
 
     private fun setupSystemUI() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
     }
 
-    abstract fun setSystemPaddings()
+    protected open fun setSystemPaddings(rootView: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
 }

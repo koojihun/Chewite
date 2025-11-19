@@ -37,12 +37,8 @@ class EditProfileActivity : BaseActivity() {
         setFinishButton()
     }
 
-    override fun setSystemPaddings() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    override fun setSystemPaddings(rootView: View) {
+        super.setSystemPaddings(rootView)
         setUpImeAnimation()
     }
 
