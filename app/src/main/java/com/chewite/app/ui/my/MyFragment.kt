@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.chewite.app.data.terms.TermsType
 import com.chewite.app.databinding.FragmentMyBinding
 import com.chewite.app.ui.my.edit_profile.EditProfileActivity
 import com.chewite.app.ui.terms.TermsActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MyFragment : Fragment() {
 
     private var _binding: FragmentMyBinding? = null
@@ -30,6 +36,13 @@ class MyFragment : Fragment() {
         myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
         setEditProfileButton()
         setTermsButtons()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                myViewModel.currentUser.collect { user ->
+                    binding.nicknameTextview.text = user?.nickname ?: "등록되지 않은 사용자"
+                }
+            }
+        }
     }
 
     private fun setEditProfileButton() {

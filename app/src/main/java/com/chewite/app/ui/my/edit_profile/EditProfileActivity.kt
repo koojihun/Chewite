@@ -17,10 +17,12 @@ import coil.transform.CircleCropTransformation
 import com.chewite.app.R
 import com.chewite.app.databinding.ActivityEditProfileBinding
 import com.chewite.app.ui.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
+@AndroidEntryPoint
 class EditProfileActivity : BaseActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
@@ -93,6 +95,7 @@ class EditProfileActivity : BaseActivity() {
         binding.profileNicknameEdittext.doAfterTextChanged {
             viewModel.updateNickname(it?.toString().orEmpty())
         }
+        binding.profileNicknameEdittext.setText(viewModel.nickname.value)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.nickname.collect {

@@ -5,10 +5,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import com.chewite.app.repository.UserRepository
 import com.chewite.app.ui.MainActivity
 import com.chewite.app.ui.login.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LauncherActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splash = installSplashScreen()
@@ -36,6 +46,9 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     private fun isLoggedIn(): Boolean {
+        lifecycleScope.launch(Dispatchers.IO) {
+            userRepository.loadUser()
+        }
         return false
     }
 }
