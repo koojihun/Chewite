@@ -4,6 +4,7 @@ coil = "2.7.0"
 coreSplashscreen = "1.0.1"
 credentials = "1.5.0"
 googleid = "1.1.1"
+hiltAndroid = "2.57.2"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -23,6 +24,8 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -37,4 +40,5 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 
