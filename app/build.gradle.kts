@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.hilt.android)
     id("kotlin-kapt")
 }
 
@@ -38,6 +38,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+}
+
+hilt {
+    enableAggregatingTask = false
 }
 
 dependencies {
