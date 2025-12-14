@@ -45,26 +45,19 @@ hilt {
 }
 
 dependencies {
-
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.security.crypto)
     implementation(libs.aws.android.sdk.core)
     implementation(libs.aws.android.sdk.cognitoidentityprovider)
-
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.moshi.kotlin)
-
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
-    // Credential Manager
     implementation(libs.androidx.credentials)
-    // Google Identity (Sign in with Google for Credential Manager)
     implementation(libs.googleid)
-
-
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.coil)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

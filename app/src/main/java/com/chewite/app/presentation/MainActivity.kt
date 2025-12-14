@@ -14,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -33,7 +32,6 @@ class MainActivity : BaseActivity() {
             if (current == R.id.navigation_home) {
                 finish()
             }
-
             val popped = navController.popBackStack(R.id.navigation_home, false)
             if (!popped) {
                 navController.navigate(

@@ -1,4 +1,4 @@
-package com.chewite.app.data.login
+package com.chewite.app.data.account
 
 import com.squareup.moshi.Json
 
@@ -17,8 +17,14 @@ data class UserInfo(
 )
 
 data class Term(
-    @Json(name = "service_agreed") val serviceAgreed: String,
-    @Json(name = "policy_agreed") val policyAgreed: String,
-    @Json(name = "marketing_agreed") val marketingAgreed: String
+    @Json(name = "service_agreed") val serviceAgreed: String?,
+    @Json(name = "policy_agreed") val policyAgreed: String?,
+    @Json(name = "marketing_agreed") val marketingAgreed: String?
+)
+
+data class SignUpInfo(
+    @Json(name = "service_agreed") val serviceAgreed: Boolean,
+    @Json(name = "policy_agreed") val policyAgreed: Boolean,
+    @Json(name = "marketing_agreed") val marketingAgreed: Boolean,
 )
 

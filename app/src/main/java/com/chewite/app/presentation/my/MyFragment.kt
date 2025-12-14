@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MyFragment : Fragment() {
-
     private var _binding: FragmentMyBinding? = null
     private val binding get() = _binding!!
     private lateinit var myViewModel: MyViewModel
@@ -37,11 +36,7 @@ class MyFragment : Fragment() {
         setEditProfileButton()
         setTermsButtons()
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                myViewModel.currentUser.collect { user ->
-                    binding.nicknameTextview.text = user?.nickname ?: "등록되지 않은 사용자"
-                }
-            }
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {}
         }
     }
 

@@ -78,7 +78,6 @@ class LoginActivity : BaseActivity() {
             if (idToken == null) {
                 Log.w(TAG, "Google credential returned but idToken was null")
             } else {
-                Log.i(TAG, "idToken = $idToken")
                 viewModel.verifyGoogleToken(idToken)
             }
         }
