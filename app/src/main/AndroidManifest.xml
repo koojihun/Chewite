@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.login.LoginActivity"/>
-        <activity android:name=".ui.signup.SignUpActivity"/>
-        <activity android:name=".ui.terms.TermsActivity" />
+        <activity android:name=".presentation.MainActivity" />
+        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.signup.SignUpActivity"/>
+        <activity android:name=".presentation.terms.TermsActivity" />
         <activity
-            android:name=".ui.my.edit_profile.EditProfileActivity"
+            android:name=".presentation.my.edit_profile.EditProfileActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 

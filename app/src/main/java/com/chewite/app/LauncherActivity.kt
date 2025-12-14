@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
-import com.chewite.app.repository.UserRepository
-import com.chewite.app.ui.MainActivity
-import com.chewite.app.ui.login.LoginActivity
+import com.chewite.app.domain.repository.UserRepository
+import com.chewite.app.presentation.MainActivity
+import com.chewite.app.presentation.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

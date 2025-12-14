@@ -1,7 +1,7 @@
 package com.chewite.app.di
 
-import com.chewite.app.repository.UserRepository
-import com.chewite.app.repository.UserRepositoryImpl
+import com.chewite.app.domain.repository.UserRepository
+import com.chewite.app.data.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
