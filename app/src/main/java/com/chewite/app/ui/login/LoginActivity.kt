@@ -3,29 +3,58 @@ package com.chewite.app.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.exceptions.GetCredentialException
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.chewite.app.R
 import com.chewite.app.databinding.ActivityLoginBinding
 import com.chewite.app.ui.BaseActivity
 import com.chewite.app.ui.signup.SignUpActivity
 import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        setupObservers()
         setXButtonClickListener()
         setLoginButtonsClickListener()
+    }
+
+    private fun setupObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.loginState.collect { state ->
+                    when (state) {
+                        is LoginUiState.Loading -> {
+                            Log.d("LoginActivity", "Loading...")
+                        }
+                        is LoginUiState.Success -> {
+                            Log.i("TEST_LOG_TAG", "Success: ${state.data}")
+                        }
+                        is LoginUiState.Error -> {
+                            Log.e("TEST_LOG_TAG", "Error: ${state.message}")
+                        }
+                        LoginUiState.Idle -> {}
+                    }
+                }
+            }
+        }
     }
 
     private fun setXButtonClickListener() = binding.xBtn.setOnClickListener { finish() }
@@ -54,7 +83,7 @@ class LoginActivity : BaseActivity() {
 
                     // 2) Google ID Token 추출
                     val cred = credentialResponse.credential
-                    when (cred) {
+                    val idToken = when (cred) {
                         is CustomCredential -> {
                             if (cred.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
                                 GoogleIdTokenCredential.createFrom(cred.data).idToken
@@ -66,15 +95,8 @@ class LoginActivity : BaseActivity() {
                         else -> throw IllegalStateException("Unexpected credential class: ${cred::class.java}")
                     }
 
-                    startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
-
-                    // 3) 백엔드 검증(네트워크는 IO로)
-//                    val myToken = withContext(Dispatchers.IO) {
-//                        api.verifyGoogleIdToken(VerifyReq(idToken))
-//                    }
-
-                    // 4) 앱 세션 저장
-//                    sessionStore.save(myToken)
+                    // 3) ViewModel로 토큰 전달
+                    viewModel.verifyGoogleToken(idToken)
 
                 } catch (e: GetCredentialException) {
                     Log.i("TEST_LOG_TAG", "Credential error: $e")

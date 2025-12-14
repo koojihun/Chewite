@@ -45,6 +45,14 @@ hilt {
 }
 
 dependencies {
+
+    implementation(libs.aws.android.sdk.core)
+    implementation(libs.aws.android.sdk.cognitoidentityprovider)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi.kotlin)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
