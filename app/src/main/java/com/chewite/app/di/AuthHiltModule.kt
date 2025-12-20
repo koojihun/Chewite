@@ -1,31 +1,44 @@
 package com.chewite.app.di
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStoreFile
+import androidx.credentials.CredentialManager
 import com.amazonaws.ClientConfiguration
 import com.amazonaws.auth.AnonymousAWSCredentials
 import com.amazonaws.regions.Region.getRegion
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.cognitoidentityprovider.AmazonCognitoIdentityProviderClient
-import com.chewite.app.data.auth.AuthRepositoryImpl
-import com.chewite.app.domain.repository.AuthRepository
+import com.chewite.app.data.api.auth.social.GoogleAuthProvider
+import com.chewite.app.data.api.auth.social.SocialAuthProvider
+import com.chewite.app.data.api.chewite.AccountApi
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AuthHiltModule {
+
     @Provides
     @Singleton
-    fun bindAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
+    fun provideRetrofit(): Retrofit {
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        return Retrofit.Builder().baseUrl("https://poodle.petground.kr/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAccountApi(retrofit: Retrofit): AccountApi {
+        return retrofit.create(AccountApi::class.java)
+    }
 
     @Provides
     @Singleton
@@ -43,13 +56,16 @@ object AuthHiltModule {
 
     @Provides
     @Singleton
-    @Named("auth")
-    fun provideAuthDataStore(
+    @Named("GoogleAuthProvider")
+    fun provideGoogleAuthProvider(
+        @ApplicationContext context: Context, credentialManager: CredentialManager
+    ): SocialAuthProvider = GoogleAuthProvider(context, credentialManager)
+
+    @Provides
+    @Singleton
+    fun provideCredentialManager(
         @ApplicationContext context: Context
-    ): DataStore<Preferences> {
-        return PreferenceDataStoreFactory.create(
-            corruptionHandler = null, migrations = emptyList(), produceFile = {
-                context.preferencesDataStoreFile("auth_tokens")
-            })
+    ): CredentialManager {
+        return CredentialManager.create(context)
     }
 }

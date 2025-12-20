@@ -1,22 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
-    <style name="Theme.Chewite" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <!-- ✅ 실제 앱 테마 -->
+    <style name="Theme.Chewite" parent="Theme.Material3.DayNight.NoActionBar" />
 
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
-        <item name="android:windowSplashScreenBackground">@color/primary_500</item>
+    <!-- ✅ 스플래시 전용 -->
+    <style name="Theme.Chewite.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary_500</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
 
-        <!-- SignUp Profile Select Profile Image Bottom Sheet -->
-        <item name="bottomSheetDialogTheme">@style/MyProfileBottomSheet</item>
+        <!-- ✅ 스플래시 끝나면 이 테마로 자동 전환 -->
+        <item name="postSplashScreenTheme">@style/Theme.Chewite</item>
     </style>
 </resources>
